@@ -1,0 +1,8 @@
+---
+applications:
+- name: cf-rps
+  host: cf-rps-${random-word}
+  memory: 128M
+  instances: 1
+  path: .
+  buildpack: python_buildpack

@@ -1,0 +1,23 @@
+<!doctype html>
+<title>Cloud Foundry RPS</title>
+{% if name %}
+  <h1>Hello {{ name }}!</h1>
+{% else %}
+  <h1>Hello, World!</h1>
+{% endif %}
+<!--
+'''
+GET    '/[index/]'           Show the homepage
+GET    '/matches/[<string>]' Retrieve a match, or all matches
+GET    '/games/[<string>]'   Retrieve a game, or all games
+POST   '/matches/'           Create a new match
+POST   '/games/[<string>]'   Create a new game
+PUT    '/games/[<string>]'   Submit a play to a new or existing game
+'''
+-->
+<ul>
+  <li><a href='/index'>/index</a></li>
+  <li><a href='/matches'>/getmatch</a></li>
+  <li><a href='/games'>/getgame</a></li>
+  <li><a href='/killit'>/killit</a></li>
+</ul>
