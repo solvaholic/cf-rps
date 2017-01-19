@@ -19,12 +19,12 @@ port = int(os.getenv('PORT', 8088))
 #   https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
 
 '''
-GET    '/[index/]'           Show the homepage
-GET    '/matches/[<string>]' Retrieve a match, or all matches
-GET    '/games/[<string>]'   Retrieve a game, or all games
-POST   '/matches/'           Create a new match
-POST   '/games/[<string>]'   Create a new game
-PUT    '/games/[<string>]'   Submit a play to a new or existing game
+    GET    '/[index/]'           Show the homepage
+    GET    '/matches/[<string>]' Retrieve a match, or all matches
+    GET    '/games/[<string>]'   Retrieve a game, or all games
+    POST   '/matches/'           Create a new match
+    POST   '/games/[<string>]'   Create a new game
+    PUT    '/games/[<string>]'   Submit a play to a new or existing game
 '''
 
 @app.route('/', methods=['GET'])
@@ -81,18 +81,12 @@ def post_games(match_id='POST'):
 @app.route('/games/game_id/<string:game_id>/<string:my_play>', methods=['PUT'])
 def play_game(my_play='PUT',game_id='PUT'):
     """Submit a play to a game. Return results of the game."""
-    # If no game_id or match_id then create a new game and play it
+    # If no my_play then something is wrong
+    # If no game_id and no match_id then create a new game and play it
     # If game_id then play that game
     # If match_id and no game_id then .. idk .. tea?
     result = getfromreq()
     return result
-
-@app.route('/killit/', methods=['GET'])
-def kill_it():
-    """Unceremoniously kill this running Python process and Flask app."""
-    # You'd want to remove (or hide) this feature in the wild
-    quit()
-    return ''
 
 def getfromreq(myreq=None):
     """Get useful fields from request data."""
