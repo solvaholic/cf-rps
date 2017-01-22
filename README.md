@@ -2,7 +2,11 @@
 Rock, Paper, Scissors game to demonstrate Cloud Foundry development concepts and service integrations
 
 # v0.0
-20170118: Python Flask app with route (stubs) to retrieve, create, and play RPS games
+20170120: Instant gameplay available on PUT route
+
+# To run locally, with debugging
+ $ export FLASK_DEBUG=1
+ $ python cf-rps.py
 
 # Some references
 [PCF Dev](http://pivotal.io/pcf-dev)

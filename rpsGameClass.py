@@ -1,5 +1,6 @@
 """Define object class for rock, paper, scissors game"""
 import json, random
+from flask import current_app as app
 
 class rpsGame( object ):
     """Provide data structure and methods for rock, paper, scissors game."""
@@ -66,7 +67,7 @@ class rpsGame( object ):
         # https://www.balabit.com/documents/syslog-ng-ose-latest-guides/en/syslog-ng-ose-guide-admin/html/concepts-message-ietfsyslog.html
         if logText is not None:
             # How do we log from here out to the Flask app.logger ?
-            pass
+            app.logger.debug(str(logText))
 
         return
 

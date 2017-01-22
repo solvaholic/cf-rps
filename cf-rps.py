@@ -29,11 +29,11 @@ port = int(os.getenv('PORT', 8088))
 
 @app.before_first_request
 def setup_logging():
-    if not app.debug:
-        # In production mode, add log handler to sys.stderr.
-        myCh = logging.StreamHandler(sys.stdout)
-        myCh.setLevel(logging.DEBUG)
-        app.logger.addHandler(myCh)
+    # Add log handler to stdout
+    myCh = logging.StreamHandler(sys.stdout)
+    myCh.setLevel(logging.DEBUG)
+    app.logger.addHandler(myCh)
+    pass
 
 @app.route('/', methods=['GET'])
 @app.route('/index/', methods=['GET'])
