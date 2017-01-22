@@ -5,8 +5,8 @@ Rock, Paper, Scissors game to demonstrate Cloud Foundry development concepts and
 20170120: Instant gameplay available on PUT route
 
 # To run locally, with debugging
- $ export FLASK_DEBUG=1
- $ python cf-rps.py
+    $ export FLASK_DEBUG=1
+    $ python cf-rps.py
 
 # Some references
 [PCF Dev](http://pivotal.io/pcf-dev)
