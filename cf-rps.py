@@ -1,7 +1,7 @@
 """Cloud Foundry Rock, Paper, Scissors"""
 from flask import Flask, render_template, jsonify
-import cf_deployment_tracker
-import os
+import cf_deployment_tracker, os
+from rpsGameClass import rpsGame
 
 # Emit deployment event
 cf_deployment_tracker.track()
@@ -85,16 +85,9 @@ def play_game(my_play='PUT',game_id='PUT'):
     # If no game_id and no match_id then create a new game and play it
     # If game_id then play that game
     # If match_id and no game_id then .. idk .. tea?
-    result = getfromreq()
-    return result
-
-def getfromreq(myreq=None):
-    """Get useful fields from request data."""
-    result = jsonify({"game_id":"---",
-               "match_id":"---",
-               "yourplay":"---",
-               "npc_play":"---",
-               "result":"---"})
+    # Put together all the values we need and load the game
+    with rpsGame( play1=my_play ) as thisGame:
+        result = thisGame.toJSON()
     return result
 
 if __name__ == '__main__':
