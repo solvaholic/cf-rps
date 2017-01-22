@@ -1,5 +1,5 @@
 """Define object class for rock, paper, scissors game"""
-import json, random, datetime
+import json, random
 
 class rpsGame( object ):
     """Provide data structure and methods for rock, paper, scissors game."""
@@ -24,7 +24,6 @@ class rpsGame( object ):
             self.status = self.play()
         except:
             self.status = 'Some gameplay data are missing or invalid.'
-        self.events = [] # Ordered list of events for this object
         dictGameInfo = {'match_id':self.match_id,
                         'game_id' :self.game_id}
         dictGameInfo.update(self.plays)
@@ -61,15 +60,14 @@ class rpsGame( object ):
         return result
 
     def log( self, logText=None ):
-        """Append logText message to .events, in syslog format."""
+        """Log a message as requested."""
         # TODO: Accept more parameters, like msg, data, src, pri
+
         # https://www.balabit.com/documents/syslog-ng-ose-latest-guides/en/syslog-ng-ose-guide-admin/html/concepts-message-ietfsyslog.html
         if logText is not None:
-            # TODO: Log the time the event occurred rather than the time we logged it
-            myIsotime = datetime.datetime.utcnow().isoformat()[:-3]+'Z'
-            # <priority>VERSION ISOTIMESTAMP HOSTNAME APPLICATION PID MESSAGEID STRUCTURED-DATA MSG
-            result = '<167>1 '+myIsotime+' <cf-route> rpsGame - - - '+str(logText)
-            self.events.append(result)
+            # How do we log from here out to the Flask app.logger ?
+            pass
+
         return
 
     def toJSON( self ):

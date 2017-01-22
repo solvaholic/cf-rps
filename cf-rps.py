@@ -1,6 +1,6 @@
 """Cloud Foundry Rock, Paper, Scissors"""
 from flask import Flask, render_template, jsonify
-import cf_deployment_tracker, os
+import cf_deployment_tracker, os, logging, sys
 from rpsGameClass import rpsGame
 
 # Emit deployment event
@@ -26,6 +26,14 @@ port = int(os.getenv('PORT', 8088))
     POST   '/games/[<string>]'   Create a new game
     PUT    '/games/[<string>]'   Submit a play to a new or existing game
 '''
+
+@app.before_first_request
+def setup_logging():
+    if not app.debug:
+        # In production mode, add log handler to sys.stderr.
+        myCh = logging.StreamHandler(sys.stdout)
+        myCh.setLevel(logging.DEBUG)
+        app.logger.addHandler(myCh)
 
 @app.route('/', methods=['GET'])
 @app.route('/index/', methods=['GET'])
