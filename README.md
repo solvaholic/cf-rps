@@ -1,14 +1,5 @@
-<<<<<<< HEAD
-# cf-rps
-Rock, Paper, Scissors game to demonstrate Cloud Foundry development concepts and service integrations
-
-Check out [the cf-rps features project](https://github.com/solvaholic/cf-rps/projects/1) on github.com
-
-=======
->>>>>>> 00a9a7cd6ba565a131ec287f65833234f3f96e59
 # v0.0
-* 20170120: Instant gameplay available on PUT route
-* ????????: Save/log games and matches
+20170120: Instant gameplay available on PUT route
 
 # To run locally, with debugging
     $ export FLASK_DEBUG=1
